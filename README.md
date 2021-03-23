@@ -1,4 +1,4 @@
-### branch: spring_session
+### branch: spring-session
 
 * git url: git@github.com:Geckoc/spring_session.git
 
