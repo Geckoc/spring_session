@@ -7,8 +7,37 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd
        ">
+    <!--
+    session共享解决方案1.  [域名相同，项目名称相同，端口不同]
+        http://localhost:8081/example/get
+        http://localhost:8082/example/get
+       注入RedisHttpSessionConfiguration 即可解决
+
+   session共享解决方案2.  [域名相同，项目名称不同，端口不同]
+        http://localhost:8081/example/get
+        cookie中Path存储的是/example/
+        http://localhost:8082/demo/get
+        cookie中Path存储的是/demo/
+        由于CookiePath路径的原因导致session共享失败
+        注入RedisHttpSessionConfiguration 并添加属性property name=cookieSerializer ref="defaultCookieSerializer"
+        cookieSerializer是一个接口，要注入其实现类DefaultCookieSerializer
+
+   session共享解决方案3.  [域名不同，项目名称不同，端口不同]
+    http://p2p.myweb.com:8081/example/get
+    http://o2o.myweb.com:8082/demo/get
+    由于Domain域名不同,导致session共享失败
+    注入RedisHttpSessionConfiguration  设置doMainName为相同的二级域名
+    -->
+    <bean  id="defaultCookieSerializer" class="org.springframework.session.web.http.DefaultCookieSerializer">
+        <!--将session共享的cookiePath设置为根路径/，在任意的目录下都可以访问获取到 -->
+        <property name="cookiePath" value="/"/>
+        <!-- 将session共享的domainName设置为相同的二级域名 -->
+        <property name="domainName" value="myweb.com"/>
+    </bean>
     <!-- Spring session 的配置类 -->
-    <bean id="redisHttpSessionConfiguration" class="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration"/>
+    <bean id="redisHttpSessionConfiguration" class="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration">
+        <property name="cookieSerializer" ref="defaultCookieSerializer"/>
+    </bean>
 </beans>
 
 
