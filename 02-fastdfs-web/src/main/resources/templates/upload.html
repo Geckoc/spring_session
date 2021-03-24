@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>FileUpload</title>
+</head>
+<body>
+    <!--
+        文件上传method必须是post
+        设置enctype="multipart/form-data"
+        name属性和controller形参一致
+    -->
+    <form th:action="@{/fileUpload}" method="post" enctype="multipart/form-data">
+        <input type="file" name="fileName"> <br>
+        <button type="submit">上传</button>
+    </form>
+    <hr>
+    <a th:href="@{'/fileDownload1?groupName=group1&remoteFileName=M00/00/00/wKi2gGBbEKqAI2meACoeC5KngBs875.jpg'}">下载1</a>
+    <hr>
+    <a th:href="@{'/fileDownload2?groupName=group1&remoteFileName=M00/00/00/wKi2gGBbEKqAI2meACoeC5KngBs875.jpg'}">下载2</a>
+</body>
+</html>

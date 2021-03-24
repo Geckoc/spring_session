@@ -1,0 +1,10 @@
+spring:
+  thymeleaf:
+    cache: false
+# 解决 org.apache.tomcat.util.http.fileupload.impl.FileSizeLimitExceededException: The field file exceeds its maximum permitted size of 1048576 bytes.
+# 查看官方文档因为springboot内置tomcat的文件传输默认为1MB
+  servlet:
+    multipart:
+      max-file-size: 50MB  # 设置单个文件大小
+      max-request-size: 50MB # 设置单次请求文件总大小
+
