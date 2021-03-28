@@ -6,7 +6,7 @@ import com.rabbitmq.client.Channel;
 import java.io.IOException;
 
 /**
- * Exchange交换机  direct模式发送消息
+ * Exchange交换机  direct路由模式发送消息
  *  1、使用Exchange的direct模式时接收者的RoutingKey必须要与发送时的RoutingKey完全一致否则无法获取消息
  * 	2、接收消息时队列名也必须要发送消息时的完全一致
  */
@@ -19,7 +19,7 @@ public class SendDirectMessage {
                声明定义交换机
                 exchangeDeclare(String exchange, String type, boolean durable)
                 参数1：交换机名称，参数2：交换机类型，参数3：是否持久化
-                exchange：交换机类型取值为 direct、queue、topic、headers
+                exchange：交换机类型取值为 direct、fanout、topic、headers
              */
             channel.exchangeDeclare("directExchange","direct", true);
             /*
@@ -36,8 +36,10 @@ public class SendDirectMessage {
                 用于消息队列和交换器之间的关联。一个绑定就是基于路由键将交换器和消息队列连接起来的路由规则
                 queueBind(String queue, String exchange, String routingKey)
                 参数1：消息队列名称，参数2：交换机名称，参数3：路由键
+                可绑定多个路由键
              */
             channel.queueBind("directQueue", "directExchange", "directRoutingKey");
+            channel.queueBind("directQueue", "directExchange", "directRoutingKey_error");
             // 消息内容
             String message = "this's directExchange message";
             // 发送消息到交换机中
