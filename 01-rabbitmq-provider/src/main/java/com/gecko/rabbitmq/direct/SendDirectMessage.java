@@ -1,6 +1,6 @@
 package com.gecko.rabbitmq.direct;
 
-import com.gecko.rabbitmq.util.RabbitMQUtil;
+import com.gecko.rabbitmq.config.RabbitMQUtil;
 import com.rabbitmq.client.Channel;
 
 import java.io.IOException;
@@ -19,7 +19,7 @@ public class SendDirectMessage {
                声明定义交换机
                 exchangeDeclare(String exchange, String type, boolean durable)
                 参数1：交换机名称，参数2：交换机类型，参数3：是否持久化
-                exchange：交换机类型取值为 direct、fanout、topic、headers
+                exchange：交换机类型取值为 direct、emitmessage、topic、headers
              */
             channel.exchangeDeclare("directExchange","direct", true);
             /*

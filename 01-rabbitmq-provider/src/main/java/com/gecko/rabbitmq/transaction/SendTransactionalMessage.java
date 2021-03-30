@@ -1,6 +1,6 @@
 package com.gecko.rabbitmq.transaction;
 
-import com.gecko.rabbitmq.util.RabbitMQUtil;
+import com.gecko.rabbitmq.config.RabbitMQUtil;
 import com.rabbitmq.client.Channel;
 
 import java.io.IOException;

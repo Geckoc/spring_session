@@ -1,7 +1,7 @@
 package com.gecko.ribbitmq.direct;
 
 
-import com.gecko.rabbitmq.util.RabbitMQUtil;
+import com.gecko.rabbitmq.config.RabbitMQUtil;
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.DefaultConsumer;

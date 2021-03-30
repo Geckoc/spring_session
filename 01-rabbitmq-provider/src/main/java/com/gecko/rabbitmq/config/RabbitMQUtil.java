@@ -1,4 +1,4 @@
-package com.gecko.rabbitmq.util;
+package com.gecko.rabbitmq.config;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;

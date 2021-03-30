@@ -1,7 +1,7 @@
-package com.gecko.rabbitmq.fanout;
+package com.gecko.rabbitmq.emitmessage;
 
 
-import com.gecko.rabbitmq.util.RabbitMQUtil;
+import com.gecko.rabbitmq.config.RabbitMQUtil;
 import com.rabbitmq.client.Channel;
 
 import java.io.IOException;
@@ -23,7 +23,7 @@ public class SendFanoutMessage {
 
         Channel channel = RabbitMQUtil.getChannel();
         // 声明交换机
-        channel.exchangeDeclare("fanoutExchange", "fanout", true);
+        channel.exchangeDeclare("fanoutExchange", "emitmessage", true);
         // 发送消息
         channel.basicPublish("fanoutExchange", "", null, message.getBytes());
         RabbitMQUtil.releaseRabbitMQ();

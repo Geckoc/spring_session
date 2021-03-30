@@ -1,0 +1,11 @@
+# 配置内置Tomcat端口
+server:
+  port: 6068
+# 配置rabbitMQ基本信息
+spring:
+  rabbitmq:
+    port: 5672
+    host: 192.168.182.131
+    username: root
+    password: root
+    virtual-host: /
