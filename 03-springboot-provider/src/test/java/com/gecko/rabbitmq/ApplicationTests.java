@@ -37,8 +37,8 @@ class ApplicationTests {
     @Test
     void topicMessage() {
         emitTopicMessage.emitAA();
-//        emitTopicMessage.emitAABB();
-//        emitTopicMessage.emitAABBCC();
+        emitTopicMessage.emitAABB();
+        emitTopicMessage.emitAABBCC();
     }
 
 }

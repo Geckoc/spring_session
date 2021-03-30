@@ -3,6 +3,9 @@ package com.gecko.rabbitmq.receiver;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
+/**
+ * 动态路由模式，
+ */
 @Component
 public class TopicReceiver {
 
